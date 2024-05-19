@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Human Body Scanner</title>
+    <style>
+        /* Dark theme */
+        body {
+            background-color: #222;
+            color: #fff;
+            font-family: Arial, sans-serif;
+        }
+        /* Center the div */
+        .center {
+            text-align: center;
+            margin-top: 50px;
+        }
+        /* Style the select boxes */
+        select {
+            padding: 10px;
+            font-size: 16px;
+            margin: 10px;
+            background-color: #444;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+        }
+        /* Style the button */
+        .btn {
+            padding: 10px 20px;
+            font-size: 16px;
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .btn:hover {
+            background-color: #0056b3;
+        }
+        /* Add animation */
+        .animate {
+            animation: slideIn 1s ease-in-out;
+        }
+        @keyframes slideIn {
+            0% {
+                opacity: 0;
+                transform: translateY(-50px);
+            }
+            100% {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        /* Hide the div initially */
+        .hidden {
+            display: none;
+        }
+        /* Styling for divs */
+        .styled-div {
+            background-color: #2c3e50;
+            width: 400px;
+            margin: 20px auto;
+            padding: 20px;
+            border-radius: 10px;
+            border: 1px solid #34495e;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+            color: #fff;
+        }
+        .styled-div h2 {
+            font-size: 24px;
+            margin-bottom: 20px;
+        }
+        .styled-div .error {
+            color: #e74c3c;
+            margin-bottom: 10px;
+            font-weight: bold;
+        }
+        .styled-div .fix {
+            color: #2ecc71;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <div class="center animate styled-div">
+        <h1>Welcome to Human Body Scanner</h1>
+        <p>Unlock the mysteries of the human body!</p>
+        
+        <!-- Select Attached Human -->
+        <div id="option-div">
+            <label for="attached-human">Select Attached Human:</label>
+            <select id="attached-human">
+                <option value="sarthak">Sarthak</option>
+                <option value="buri-buri-jaimon">Buri Buri Jaimon</option>
+                <option value="shizuka">Shizuka</option>
+            </select>
+        
+            <!-- Select Scan Type -->
+            <label for="scan-type">Select Scan Type:</label>
+            <select id="scan-type">
+                <option value="full-body">Full Body Scan</option>
+                <option value="brain">Brain Scan</option>
+                <option value="kidney-check">Kidney Price Check</option>
+                <option value="heart-check">Heart Price Check</option>
+                <option value="eyes-check">Eyes Price Check</option>
+            </select>
+            
+            <!-- Start Scan Button -->
+            <button class="btn" id="start-scan-btn">Start Scan</button>
+        </div>
+        
+        <!-- New Div to Display Scan Information -->
+        <div id="scan-info" class="hidden styled-div">
+            <h2 id="scan-heading"></h2>
+            <!-- Scanning Bar -->
+            <div class="scanning-bar"></div>
+        </div>
+        
+        <!-- Troubleshooting Div -->
+        <div id="troubleshoot-div" class="hidden styled-div">
+            <h2>Scan details:-</h2>
+            <div class="error">Brain completely damaged detected</div>
+            <div class="error">Kidney price fell from 60 rupees to 10 rupees</div>
+            <div class="error">Laundiya baj detected</div>
+            <div class="error">Gay detected</div>
+            <div class="error">Play boy detected</div>
+            <div class="fix">Solution: muthi marna chodo</div>
+        </div>
+    </div>
+
+    <script>
+        // JavaScript to handle the button click event
+        document.getElementById("start-scan-btn").addEventListener("click", function() {
+            // Get the selected human name
+            var selectedHuman = document.getElementById("attached-human").value;
+            
+            // Hide the option div
+            document.getElementById("option-div").style.display = "none";
+            
+            // Show the scan info div
+            document.getElementById("scan-info").style.display = "block";
+            
+            // Display the scan heading
+            document.getElementById("scan-heading").textContent = "We are scanning " + selectedHuman;
+
+            // After 10 seconds, show the troubleshooting div
+            setTimeout(function() {
+                document.getElementById("scan-info").style.display = "none";
+                document.getElementById("troubleshoot-div").style.display = "block";
+            }, 10000); // 10 seconds
+        });
+    </script>
+
+</body>
+</html>
